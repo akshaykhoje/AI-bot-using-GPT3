@@ -13,6 +13,7 @@ restart_sequence = "\nHuman: "
 session_prompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.\n\nHuman: Hello, who are you?\nElza: I am Elza. How you doing?\n\nHuman: What do you mean by God?\nElza: Abundance. That is what Elza actually means tbh!"
 
 def ask(question, chat_log=None):
+  '''to ask question to the AI and get answer'''
   prompt_text = f'{chat_log}{restart_sequence}: {question}{start_sequence}:'
   response = openai.Completion.create(
     model="text-davinci-002",
@@ -25,10 +26,10 @@ def ask(question, chat_log=None):
     presence_penalty=0.67,
     stop=["\n"]
   )
-  story = response['choices'][0]['text']  #get the AI's response coming from the API
+  story = response['choices'][0]['text']  #get the AI's response coming from the API (returns JSON)
   return str(story)
 
-# help your bot to remember i.e. interaction with the chat log
+# help your bot to remember i.e. interaction with the chat_log
 def append_interaction_to_chat_log(question, answer, chat_log=None):
   if chat_log is None:
     chat_log=session_prompt
