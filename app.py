@@ -6,7 +6,7 @@ from elza_bot import ask, append_interaction_to_chat_log
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = "n\xc8.\xbfmS1\x94@\xbd\x898(W\xaf\xd0\xa1\x0c\xf0\x80|\x83\xaf\xcc"
+app.config['SECRET_KEY'] = "YOUR_API_KEY"
 
 @app.route('/elza_bot', methods=['POST'])
 def elza():
